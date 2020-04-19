@@ -1,55 +1,29 @@
-import 'package:flutter/material.dart';
-import 'package:EnvApp/views/pages/LoginPage.dart';
 import 'package:EnvApp/widgets/MyWidgets.dart';
-//floatingActionButton: FloatingActionButton(
-//onPressed: (){
-//jump(context,new LoginPage());
-//},
-//tooltip: '选择图片',
-//child: Icon(Icons.add_a_photo),
-//)
+import 'package:flutter/material.dart';
 
+import '../views/comments/findpage/mock_data.dart';
+import '../views/comments/findpage/friend_card.dart';
 
-
-
-
-class MinePage extends StatefulWidget{
-  @override
-  State<StatefulWidget> createState(){
-    return new _Page();
-  }
-}
-class _Page extends State<MinePage>{
-
-  void   jump(BuildContext context,Widget widget) {
-    Navigator.push<String>(
-      context,
-      new MaterialPageRoute(
-        builder: (context) => widget,
-      ),
-    ) ;
-  }
-
-
+class MinePage extends StatelessWidget {
+  const MinePage({Key key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context){
-    return layout(context);
-  }
-  Widget layout(BuildContext context){
+  Widget build(BuildContext context) {
     return new Scaffold(
       appBar: MyWidgets.buildAppBar(context, "我的"),
-      body: new ListView(
-        children: <Widget>[
-          new ListTile(
-            title: new Text('登录'),
-            onTap: (){
-              jump(context,new LoginPage());
-            },
-          ),
-        ],
+      body: ListView.separated(
+        itemCount: friendList.length,
+        itemBuilder: (context, index) {
+          return FriendCard(data: friendList[index]);
+        },
+        separatorBuilder: (context, index) {
+          return Divider(
+            height: .5,
+            indent: 75,
+            color: Color(0xFFDDDDDD),
+          );
+        },
       ),
-
     );
   }
 }

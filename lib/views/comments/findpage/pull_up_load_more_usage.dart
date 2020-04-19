@@ -1,17 +1,16 @@
-import 'package:EnvApp/widgets/MyWidgets.dart';
 import 'package:flutter/material.dart';
 
-import '../views/comments/findpage/mock_data.dart';
-import '../views/comments/findpage/news_card.dart';
+import 'mock_data.dart';
+import 'news_card.dart';
 
-class FindPage extends StatefulWidget {
-  const FindPage({Key key}) : super(key: key);
+class PullUpLoadMoreList extends StatefulWidget {
+  const PullUpLoadMoreList({Key key}) : super(key: key);
 
   @override
   _PullUpLoadMoreListState createState() => _PullUpLoadMoreListState();
 }
 
-class _PullUpLoadMoreListState extends State<FindPage> {
+class _PullUpLoadMoreListState extends State<PullUpLoadMoreList> {
   bool isLoading = false;
   ScrollController scrollController = ScrollController();
   List<NewsViewModel> list = List.from(newsList);
@@ -20,9 +19,10 @@ class _PullUpLoadMoreListState extends State<FindPage> {
   void initState() {
     super.initState();
     this.scrollController.addListener(() {
-      if (!this.isLoading &&
-          this.scrollController.position.pixels >=
-              this.scrollController.position.maxScrollExtent) {
+      if (
+        !this.isLoading &&
+        this.scrollController.position.pixels >= this.scrollController.position.maxScrollExtent
+      ) {
         setState(() {
           this.isLoading = true;
           this.loadMoreData();
@@ -47,7 +47,7 @@ class _PullUpLoadMoreListState extends State<FindPage> {
   }
 
   Widget renderBottom() {
-    if (this.isLoading) {
+    if(this.isLoading) {
       return Container(
         padding: EdgeInsets.symmetric(vertical: 15),
         child: Row(
@@ -86,22 +86,19 @@ class _PullUpLoadMoreListState extends State<FindPage> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: MyWidgets.buildAppBar(context, "发现"),
-      body: ListView.separated(
-        controller: this.scrollController,
-        itemCount: this.list.length + 1,
-        separatorBuilder: (context, index) {
-          return Divider(height: .5, color: Color(0xFFDDDDDD));
-        },
-        itemBuilder: (context, index) {
-          if (index < this.list.length) {
-            return NewsCard(data: this.list[index]);
-          } else {
-            return this.renderBottom();
-          }
-        },
-      ),
+    return ListView.separated(
+      controller: this.scrollController,
+      itemCount: this.list.length + 1,
+      separatorBuilder: (context, index) {
+        return Divider(height: .5, color: Color(0xFFDDDDDD));
+      },
+      itemBuilder: (context, index) {
+        if (index < this.list.length) {
+          return NewsCard(data: this.list[index]);
+        } else {
+          return this.renderBottom();
+        }
+      },
     );
   }
 }

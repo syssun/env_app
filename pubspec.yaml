@@ -83,6 +83,7 @@ flutter:
     - images/icons/zhuce.png
     - images/icons/weixiu.png
     - images/icons/zhuozi.png
+    - images/icons/jiantou.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 
