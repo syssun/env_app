@@ -15,22 +15,20 @@ class RegisterPageState extends State<RegisterPage>{
   Timer _countdownTimer;
   String _codeCountdownStr = '获取验证码';
   int _countdownNum = 59;
-  String retss(){
-    return null;
-  }
   Future<bool> reGetCountdown() {
+    print("1");
     setState(() {
       if (_countdownTimer != null) {
         return null;
       }
       Fluttertoast.showToast(msg: '已发送');
       // Timer的第一秒倒计时是有一点延迟的，为了立刻显示效果可以添加下一行。
-      _codeCountdownStr = '${_countdownNum--}s重新获取';
+      _codeCountdownStr = '${_countdownNum--}s后重新获取';
       _countdownTimer =
       new Timer.periodic(new Duration(seconds: 1), (timer) {
         setState(() {
           if (_countdownNum > 0) {
-            _codeCountdownStr = '${_countdownNum--}s重新获取';
+            _codeCountdownStr = '${_countdownNum--}s后重新获取';
           } else {
             _codeCountdownStr = '获取验证码';
             _countdownNum = 59;
@@ -81,7 +79,7 @@ class RegisterPageState extends State<RegisterPage>{
                       direction: Axis.horizontal,
                       children: <Widget>[
                         new Expanded(
-                          flex: 3,
+                          flex: 2,
                           child: new Container(
                             margin: EdgeInsets.only(top:20.0,left: 10.0,right: 10.0,bottom: 10.0),
                             child: new TextFormField(
@@ -106,27 +104,10 @@ class RegisterPageState extends State<RegisterPage>{
                               disabledColor: Colors.grey,
                               disabledTextColor: Colors.grey,
                               child: new Text(_codeCountdownStr ,style: new TextStyle(color: Colors.blue,fontSize: 12.0),),
-                              onPressed: ()=>retss,
+                              onPressed: ()=>reGetCountdown(),
                            ),
                         )
                       ],
-                    ),
-                    new Container(
-                      margin: EdgeInsets.only(top:20.0,left: 10.0,right: 10.0,bottom: 10.0),
-                      child: new TextFormField(
-                        obscureText: true,
-                        decoration: new InputDecoration(
-                          // labelText: '请输入验证码',
-                            icon: new Icon(Icons.lock),
-                            contentPadding: const EdgeInsets.symmetric(vertical: 8.0),
-                            //prefixIcon:new Icon(Icons.lock),
-                            hintText: '请输入验证码'
-                        ),
-                        onSaved: (val) {
-                          print(val);
-                        },
-
-                      ),
                     ),
                     new Container(
                       margin: EdgeInsets.only(top:20.0,left: 10.0,right: 10.0,bottom: 10.0),
