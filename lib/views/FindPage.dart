@@ -8,10 +8,10 @@ class FindPage extends StatefulWidget {
   const FindPage({Key key}) : super(key: key);
 
   @override
-  _PullUpLoadMoreListState createState() => _PullUpLoadMoreListState();
+  _FindPage createState() => _FindPage();
 }
 
-class _PullUpLoadMoreListState extends State<FindPage> {
+class _FindPage extends State<FindPage> {
   bool isLoading = false;
   ScrollController scrollController = ScrollController();
   List<NewsViewModel> list = List.from(newsList);
