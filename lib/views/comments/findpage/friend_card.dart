@@ -1,5 +1,6 @@
 import 'package:EnvApp/widgets/MyWidgets.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class FriendCard extends StatelessWidget {
   final FriendViewModel data;
@@ -11,43 +12,49 @@ class FriendCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      padding: EdgeInsets.all(15),
-      child: Row(
-        children: <Widget>[
-          ClipRRect(
-            borderRadius: BorderRadius.circular(4),
-            child: Image.network(
-              this.data.userImgUrl,
-              width: 24,
-              height: 24,
+    return InkWell(
+      onTap: () {
+        Fluttertoast.showToast(msg:this.data.userName,toastLength: Toast.LENGTH_SHORT);
+      },
+      child: Container(
+        //color: Colors.white,
+        padding: EdgeInsets.all(15),
+        child: Row(
+          children: <Widget>[
+            ClipRRect(
+              borderRadius: BorderRadius.circular(4),
+              child: Image.network(
+                this.data.userImgUrl,
+                width: 24,
+                height: 24,
+              ),
             ),
-          ),
-          Padding(padding: EdgeInsets.only(left: 15)),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Text(
-                      this.data.userName,
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                        color: Color(0xFF333333),
+            Padding(padding: EdgeInsets.only(left: 15)),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Text(
+                        this.data.userName,
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                          color: Color(0xFF333333),
+                        ),
                       ),
-                    ),
-                    MyWidgets.imageAssetWithSize("images/icons/jiantou.png",size:10.0),
-                  ],
-                ),
-                Padding(padding: EdgeInsets.only(top: 2)),
-              ],
+                      MyWidgets.imageAssetWithSize("images/icons/jiantou.png",
+                          size: 10.0),
+                    ],
+                  ),
+                  Padding(padding: EdgeInsets.only(top: 2)),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
