@@ -36,7 +36,14 @@ class MyWidgets {
       child: child,
     );
   }
-
-
+  //跳转
+  static void   jump(BuildContext context,Widget widget) {
+    Navigator.push<String>(
+      context,
+      new MaterialPageRoute(
+        builder: (context) => widget,
+      ),
+    ) ;
+  }
 
 }

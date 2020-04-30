@@ -72,7 +72,7 @@ class LoginPageState extends State<LoginPage>{
                                 color: Colors.blue
                             ),),
                             onTap:(){
-                              jump(context,new RegisterPage());
+                              MyWidgets.jump(context,new RegisterPage());
                             } ,
                           ),
                           new GestureDetector(
@@ -80,7 +80,7 @@ class LoginPageState extends State<LoginPage>{
                                 color: Colors.red
                             ),),
                             onTap:(){
-                              jump(context,new ForgetPassWordPage());
+                              MyWidgets.jump(context,new ForgetPassWordPage());
                             } ,
                           ),
 
@@ -110,13 +110,6 @@ class LoginPageState extends State<LoginPage>{
          );
     }
 
-    void   jump(BuildContext context,Widget widget) {
-      Navigator.push<String>(
-        context,
-        new MaterialPageRoute(
-          builder: (context) => widget,
-        ),
-      ) ;
-    }
+
 
 }

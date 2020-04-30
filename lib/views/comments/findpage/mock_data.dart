@@ -85,31 +85,36 @@ const List<FriendViewModel> friendList = [
 		userImgUrl: 'http://alipay.dl.django.t.taobao.com/rest/1.0/image?fileIds=uYFc1rftQnOzQ6UIysboFQAAACMAAQQD&zoom=original',
 		msgContent: '听说，这6个人的电费被承包了！',
 		msgTime: '13:50',
+		ctl: 'aa'
 	),
 	FriendViewModel(
 		userName: '芝麻信用',
 		userImgUrl: 'http://dl.django.t.taobao.com/rest/1.0/image?fileIds=3bFvYZLcSNy1TiMriy5WhAAAACMAAQED&zoom=2048w_1l',
 		msgContent: '本月你的芝麻分评估已完成',
 		msgTime: '07:17',
+		ctl: 'bb'
 	),
 	FriendViewModel(
 		userName: '网商银行',
 		userImgUrl: 'http://alipay.dl.django.t.taobao.com/rest/1.0/image?fileIds=eQgixqanQuOWoptE3Ut_kQAAACMAAQQD&zoom=original',
 		msgContent: '如何做到日流水460万',
 		msgTime: '昨天',
+		ctl: 'cc'
 	),
 	FriendViewModel(
 		userName: '支付宝转账',
 		userImgUrl: 'http://alipay.dl.django.t.taobao.com/rest/1.0/image?fileIds=eniYmF55SPGp4xhBsdDUpAAAACMAAQQD&zoom=original',
 		msgContent: '请查收你的转账周报',
 		msgTime: '昨天',
+		ctl: 'dd'
 	),
 
 	FriendViewModel(
-		userName: '花呗',
+		userName: '地址管理',
 		userImgUrl: 'https://oalipay-dl-django.alicdn.com/rest/1.0/image?fileIds=8JCRgxPlQvumNy9RDgtziQAAACMAAQED&zoom=2048w_80q_1l',
 		msgContent: '帮你还花呗，离欧洲杯更近一点',
 		msgTime: '06-29',
+		ctl: 'address'
 	),
 ];
 

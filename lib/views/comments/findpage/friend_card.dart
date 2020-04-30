@@ -1,3 +1,4 @@
+import 'package:EnvApp/views/pages/AddressPage.dart';
 import 'package:EnvApp/widgets/MyWidgets.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -14,7 +15,11 @@ class FriendCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Fluttertoast.showToast(msg:this.data.userName,toastLength: Toast.LENGTH_SHORT);
+        switch(this.data.ctl){
+          case 'address':
+            MyWidgets.jump(context, new AddressPage());
+            break;
+        }
       },
       child: Container(
         //color: Colors.white,
@@ -73,10 +78,13 @@ class FriendViewModel {
   /// 消息收到时间
   final String msgTime;
 
+  /// 标志id
+  final String ctl ;
   const FriendViewModel({
     this.userName,
     this.userImgUrl,
     this.msgContent,
     this.msgTime,
+    this.ctl
   });
 }
